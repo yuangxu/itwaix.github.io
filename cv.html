@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yuang Xu - Curriculum Vitae">
+    <meta name="author" content="Yuang Xu">
+    <title>CV - Yuang Xu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --card-bg: #fff;
+            --text: #1a1a2e;
+            --text-secondary: #555;
+            --accent: #4a74b9;
+            --accent-light: rgba(74, 116, 185, 0.1);
+            --accent-dark: #3a5c9e;
+            --border: #e8e8e8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-hover: 0 6px 24px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* Header */
+        .cv-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: var(--radius);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+            animation: headerShimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes headerShimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -20px); }
+        }
+
+        .cv-header h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.3rem;
+            position: relative;
+        }
+
+        .cv-header .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cv-contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .cv-contact a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(4px);
+            transition: var(--transition);
+        }
+
+        .cv-contact a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        /* Section */
+        .cv-section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow var(--transition);
+        }
+
+        .cv-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cv-section:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .cv-section h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .cv-section h2 i {
+            font-size: 1rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-light);
+            border-radius: 8px;
+            color: var(--accent);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+            padding-left: 0.8rem;
+        }
+
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid var(--card-bg);
+            box-shadow: 0 0 0 2px var(--accent);
+            z-index: 1;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .timeline-date {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 500;
+            white-space: nowrap;
+            background: var(--accent-light);
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .timeline-details {
+            margin-top: 0.5rem;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .timeline-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-details li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* Research interests */
+        .research-text {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Publications */
+        .pub-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pub-item:last-child { border-bottom: none; }
+
+        .pub-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .pub-title-text {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .pub-authors-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0.2rem 0;
+        }
+
+        .pub-authors-text .me {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .pub-venue-text {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .pub-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.4rem;
+        }
+
+        .badge-patent {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-cofirst {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Services */
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-light);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .skill-category h3 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .skill-tag {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+            background: var(--accent-light);
+            color: var(--text);
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        /* Floating buttons */
+        .fab-group {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            z-index: 100;
+        }
+
+        .fab-btn {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(74, 116, 185, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(74, 116, 185, 0.5);
+            color: #fff;
+        }
+
+        .fab-btn .fab-tooltip {
+            position: absolute;
+            right: 60px;
+            background: var(--text);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .fab-btn:hover .fab-tooltip { opacity: 1; }
+
+        /* PDF section */
+        .pdf-viewer {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .cv-footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .cv-footer a { color: #999; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .cv-container { padding: 1rem; }
+            .cv-header { padding: 2rem 1.2rem; }
+            .cv-header h1 { font-size: 2rem; }
+            .cv-section { padding: 1.4rem 1.2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .timeline-header { flex-direction: column; }
+            .print-btn { bottom: 1rem; right: 1rem; }
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: #fff; }
+            .cv-container { padding: 0; max-width: 100%; }
+            .cv-section { box-shadow: none; border: none; break-inside: avoid; }
+            .cv-header { background: var(--accent) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-btn, .back-link { display: none !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Homepage
+        </a>
+
+        <header class="cv-header">
+            <h1>Yuang Xu</h1>
+            <p class="subtitle">Incoming CS PhD Student · UC Merced</p>
+            <div class="cv-contact">
+                <a href="mailto:yuangxu.cs@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://yuangxu.com" target="_blank"><i class="fas fa-globe"></i> yuangxu.com</a>
+                <a href="https://github.com/yuangxu" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://scholar.google.com/citations?user=bEj_DUYAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Scholar</a>
+            </div>
+        </header>
+
+        <!-- Education -->
+        <section class="cv-section">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">University of California, Merced</span>
+                        <span class="timeline-date">Starting Sep. 2026</span>
+                    </div>
+                    <div class="timeline-subtitle">Incoming PhD in Computer Science</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">University of Southern California (USC)</span>
+                        <span class="timeline-date">Jan. 2024 – Dec. 2025</span>
+                    </div>
+                    <div class="timeline-subtitle">Master of Science in Computer Science</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Shandong University, China</span>
+                        <span class="timeline-date">Sep. 2018 – Jun. 2022</span>
+                    </div>
+                    <div class="timeline-subtitle">Bachelor of Engineering in Computer Science and Technology</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Interests -->
+        <section class="cv-section">
+            <h2><i class="fas fa-microscope"></i> Research Interests</h2>
+            <p class="research-text">
+                Distributed ML training &amp; inference systems on heterogeneous memory architectures
+                (e.g., CXL-based tiered memory); AI compiler and operator optimization for LLM inference
+                serving (e.g., vLLM).
+            </p>
+        </section>
+
+        <!-- Publications & Patents -->
+        <section class="cv-section">
+            <h2><i class="fas fa-file-alt"></i> Publications &amp; Patents</h2>
+            <div class="pub-item">
+                <div>
+                    <span class="pub-number">1</span>
+                    <span class="pub-title-text">Underwater Image Enhancement Method Based on Feature Fusion Neural Network</span>
+                </div>
+                <p class="pub-authors-text">
+                    Yuan Tian*, <span class="me">Yuang Xu</span>*, Jun Zhou
+                    <span class="pub-badge badge-cofirst">Co-first Author</span>
+                </p>
+                <p class="pub-venue-text">IEEE Access, 09/2022</p>
+            </div>
+            <div class="pub-item">
+                <div>
+                    <span class="pub-number">2</span>
+                    <span class="pub-title-text">A Signal Acquisition Optimization Method based on RAPID Tomography</span>
+                    <span class="pub-badge badge-patent">Patent</span>
+                </div>
+                <p class="pub-authors-text">
+                    Bin Zhang, <span class="me">Yuang Xu</span>, Wenrui Luo
+                </p>
+                <p class="pub-venue-text">CN109946384A, 06/2019</p>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="cv-section">
+            <h2><i class="fas fa-hands-helping"></i> Services</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Artifact Evaluation Committee Member</p>
+            <div>
+                <span class="service-badge"><i class="fas fa-check-circle"></i> MLSys 2026</span>
+                <span class="service-badge"><i class="fas fa-check-circle"></i> EuroSys 2026</span>
+            </div>
+        </section>
+
+        <!-- Research & Systems Projects -->
+        <section class="cv-section">
+            <h2><i class="fas fa-project-diagram"></i> Research &amp; Systems Projects</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">TinyLlama Acceleration using OpenAI Triton</span>
+                        <span class="timeline-date">May 2025 – Dec. 2025</span>
+                    </div>
+                    <div class="timeline-details">
+                        <ul>
+                            <li>Engineered a custom fused SwiGLU kernel in OpenAI Triton to integrate Linear, gating, and SiLU operations, significantly reducing global memory traffic and kernel launch overhead in MLP layers.</li>
+                            <li>Profiled and optimized memory access patterns and block-level parallelism using NVIDIA Nsight Systems and Nsight Compute to eliminate architectural bottlenecks.</li>
+                            <li>Achieved up to a 20% reduction in MLP latency on an RTX 3060 and a significantly lower GPU memory footprint compared to the PyTorch eager mode implementation.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Vision Transformer (ViT) Operator Optimization via TVM TensorIR</span>
+                        <span class="timeline-date">Aug. 2025 – Oct. 2025</span>
+                    </div>
+                    <div class="timeline-details">
+                        <ul>
+                            <li>Executed end-to-end model conversion from PyTorch to TVM via ONNX, identifying and targeting performance-critical subgraphs in Attention and Patch Embedding layers.</li>
+                            <li>Optimized memory locality and execution efficiency by combining MetaSchedule auto-tuning with manual TensorIR scheduling, including tiling, loop reordering, vectorization, and cache read/write reuse.</li>
+                            <li>Benchmarked optimized kernels on an NVIDIA RTX 3070 Ti, achieving superior inference performance and lower memory overhead compared to the PyTorch eager mode baseline.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">Mini-PyTorch: C++ Deep Learning Framework</span>
+                        <span class="timeline-date">Jan. 2025 – May 2025</span>
+                    </div>
+                    <div class="timeline-details">
+                        <ul>
+                            <li>Implemented lightweight deep learning framework in C++ to understand the internal mechanisms of systems like PyTorch.</li>
+                            <li>Designed a Tensor class with proper memory management (using smart pointers) and stride handling to support n-dimensional array operations. Developed a basic Autograd engine that constructs a dynamic computational graph (DAG) and performs reverse-mode automatic differentiation.</li>
+                            <li>Implemented an operator dispatcher to separate the frontend interface from the execution backend.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="cv-section">
+            <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">4Paradigm (AI Unicorn) – Algorithm Engineer Intern</span>
+                        <span class="timeline-date">Apr. 2025 – Sep. 2025</span>
+                    </div>
+                    <div class="timeline-subtitle">Shanghai, China</div>
+                    <div class="timeline-details">
+                        <ul>
+                            <li>Built a multimodal content generation pipeline integrating ASR (Whisper), LLM (Qwen), and TTS models.</li>
+                            <li>Optimized the inference backend service, implementing request batching and asynchronous processing, which reduced average response latency by 20% under high concurrency.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-title">TP-LINK – Software Engineer</span>
+                        <span class="timeline-date">Jul. 2022 – Jul. 2023</span>
+                    </div>
+                    <div class="timeline-subtitle">Hangzhou, China</div>
+                    <div class="timeline-details">
+                        <ul>
+                            <li>Designed a high-performance database connection pool for cloud services, utilizing lock-free data structures to handle high concurrency; contributed bug fixes to the open-source Kona JDK.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="cv-section">
+            <h2><i class="fas fa-tools"></i> Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">CUDA</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PTX Assembly</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI Systems</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OpenAI Triton</span>
+                        <span class="skill-tag">Apache TVM</span>
+                        <span class="skill-tag">PyTorch Internals</span>
+                        <span class="skill-tag">CUDA Optimization</span>
+                        <span class="skill-tag">TPU</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">GDB</span>
+                        <span class="skill-tag">Nsight Systems</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PDF Version -->
+        <section class="cv-section">
+            <h2><i class="fas fa-file-pdf"></i> PDF Version</h2>
+            <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1rem;">
+                <a href="YuangXu_PhD_Mar.pdf" download style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:0.85rem;transition:var(--transition);">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </p>
+            <iframe src="YuangXu_PhD_Mar.pdf" class="pdf-viewer" title="CV PDF"></iframe>
+        </section>
+
+        <footer class="cv-footer">
+            <p>Last updated: April 2026 · <a href="index.html">Back to Homepage</a></p>
+        </footer>
+    </div>
+
+    <div class="fab-group">
+        <a href="YuangXu_PhD_Mar.pdf" download class="fab-btn" title="Download PDF">
+            <span class="fab-tooltip">Download PDF</span>
+            <i class="fas fa-download"></i>
+        </a>
+        <button class="fab-btn" onclick="window.print()" title="Print">
+            <span class="fab-tooltip">Print</span>
+            <i class="fas fa-print"></i>
+        </button>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.cv-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+
+</html>
